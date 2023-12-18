@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Failed Page</title>
+    <link rel="stylesheet" href="/css/failPage.css"> <!-- Include your CSS file -->
+</head>
+
+<body>
+    <div class="failed_container">
+        <div class="box_info">
+            <div class="failed_icon">
+                <i style="font-size: 8rem; color: red; ">X</i> <!-- Example for icon, replace with your icon -->
+            </div>
+            <div class="transaction_error">Transaction Failed</div>
+            <div class="transaction_status_error">Error : <%= error %>
+            </div>
+            <button class="btn" style="width: 50%;" onclick="window.location.href='http://localhost:3003/home/dashboard'">Go Dashboard</button>
+            
+        </div>
+    </div>
+</body>
+
+</html>

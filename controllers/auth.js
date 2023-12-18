@@ -1,33 +1,37 @@
 const { Op } = require('sequelize');
-const {employee,department}=require('../models')
+const {user,account,branch}=require('../models');
+const jwt=require('jsonwebtoken')
 module.exports.signup=async (req,res,next)=>{
   console.log(req.body);
-  const user=await employee.findOne({where:{firstName:req.body.firstName}})
-  if(user){
+  try {
+    let client=await user.findOne({where:{username:req.body.username}})
+  if(client){
     return res.status(422).json({message:"user already exists"})
   }
-  const createdUser= await employee.create(req.body);
-  const allRows= await employee.findAndCountAll({
-    where:{
-      firstName:{
-        [Op.like]:"w%"
-      }
-    },
-    offset:0,
-    limit:4
-  })
-  console.log(allRows)
-  res.status(200).send({message:"successful",user:createdUser})
+  client=await user.create(req.body);
+  const branchInfo={branch_name:"Tolichowki",branch_code:"Hyd_211"}
+  const branch_account= await branch.create(branchInfo)
+  const account_branch= await branch.findOne({where:{branch_id:branch_account.branch_id}})
+  console.log(account_branch,'branch')
+  const client_Account= await account.create({account_type:req.body.accountType,branch_id:account_branch.branch_id,user_id:client.uuid})
+   client.account_id=client_Account.id
+  await client.save()
+   res.status(201).json({message:"created successfully",client_Account})
   next()
+  } catch (error) {
+    res.status(422).json({message:error.message})
+  }
 }
 module.exports.signIn=async(req,res,next)=>{
-  console.log(req.body)
+  console.log(req.body,'body')
   const {username,password}=req.body
-  const user=await employee.findOne({where:{firstName:username,lastName:password}})
-  if(!user){
+  const client=await user.findOne({where:{username:username,password:password}})
+  if(!client){
     return res.status(403).json({message:"user not found"})
   }
-  res.status(201).json({message:"request successful",user})
+  
+  const token=jwt.sign({userId:client.uuid,isLoggedIn:true},process.env.ACCESS_JWT_TOKEN_SECRET,{expiresIn:"365d"})
+  res.status(201).json({message:"request successful",client,token})
   next()
 }
 

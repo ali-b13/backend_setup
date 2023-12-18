@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "alib13",
+    "password": "root",
     "database": "booking_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "if0_35639176",
+    "password": "1wKTBoEJdoA0byN",
+    "database": "if0_35639176_banking_db",
+    "host": "sql110.infinityfree.com",
     "dialect": "mysql"
   }
 }

@@ -1,0 +1,71 @@
+.successContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: lavender;
+    height: 99vh;
+}
+
+.transaction_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+    gap: 0.5rem;
+}
+
+.transaction_status {
+    font-size: x-large;
+    color: green;
+}
+
+.transaction_id {
+    font-size: medium;
+    color: rgb(75, 199, 249);
+}
+.circle{
+    position: relative;
+    border: 3px solid green;
+    border-radius: 50%;
+    height: 15rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+   
+}
+
+.payment_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    color: gray;
+    font-size: large;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.payment_info>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: medium;
+}
+
+.user_data {
+    color: rgb(75, 199, 249);
+
+}
+.btn{
+    background-color: skyblue;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.2rem 1rem;
+    font-size: large;
+}

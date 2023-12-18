@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Success Page</title>
+    <link rel="stylesheet" href="/css/successPage.css"> <!-- Include  CSS file -->
+</head>
+
+<body>
+    <div class="successContainer">
+        <div class="circle"><i style="color: green; font-size: 10rem;">✓</i></div> 
+        <div class="transaction_info">
+            <div class="transaction_status">Transaction successful</div>
+            <div class="transaction_id">Transaction ID is <%= transaction.id %>
+            </div>
+        </div>
+        <div class="payment_info">
+            <div>
+                <div>Amount paid</div>
+                <div>Receiver Name</div>
+                <div>Transaction Date</div>
+            </div>
+            <div>
+                <div class="user_data">
+                    <%= transaction.amount %>$
+                </div>
+                <div class="user_data">
+                    <%= receiverName %>
+                </div>
+                <div class="user_data">
+                    <%= transaction.createdAt %>
+                </div>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href='http://localhost:3003/home/dashboard'">Go Dashboard</button> 
+    </div>
+</body>
+
+</html>
